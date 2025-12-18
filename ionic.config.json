@@ -1,0 +1,7 @@
+{
+  "name": "clientmentejuego",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
