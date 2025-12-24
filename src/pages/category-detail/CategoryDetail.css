@@ -1,0 +1,23 @@
+.category-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.shortcategory-description {
+  padding: 25px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.category-info {
+  margin: 30px 0;
+}
+
+.info-item {
+  padding: 10px 0;
+}
+
+.info-item strong {
+  margin-right: 8px;
+}
