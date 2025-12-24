@@ -1,12 +1,46 @@
-.icon-container {
+.profile-icon-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
-  flex: 0 0 auto;
+  padding: 40px 0;
+  margin-bottom: 20px;
 }
 
-.icon-container ion-icon {
-  font-size: 200px;
-  color: var(--ion-color-primary);
+.icon-oval {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: rgba(56, 128, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 14px;
+  color: var(--ion-color-medium);
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 16px;
+  color: var(--ion-text-color);
 }

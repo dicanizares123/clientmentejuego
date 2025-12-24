@@ -94,7 +94,7 @@ const CategoryDetail: React.FC = () => {
             </div>
 
             <IonButton expand="full" size="default" onClick={handleStart}>
-              Listo
+              Empezar
             </IonButton>
           </IonCardContent>
         </IonCard>

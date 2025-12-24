@@ -1,9 +1,11 @@
 .chart-content {
   width: 100%;
-  height: 250px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
 }
 
 .text-header {
@@ -19,4 +21,40 @@
   max-width: 600px;
   display: flex;
   flex-direction: column;
+}
+
+.chart-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.label-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.label-item:last-child {
+  border-bottom: none;
+}
+
+.label-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.label-text {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.label-value {
+  font-size: 18px;
+  color: var(--ion-text-color);
 }

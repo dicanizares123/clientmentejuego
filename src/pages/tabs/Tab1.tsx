@@ -1,22 +1,19 @@
 import {
   IonContent,
   IonHeader,
-  IonList,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonItem,
-  IonLabel,
-  IonListHeader,
   IonIcon,
   IonCardContent,
   IonCardTitle,
   IonCardSubtitle,
   useIonViewDidEnter,
   IonSpinner,
+  IonCard,
 } from "@ionic/react";
 import "./Tab1.css";
-import { playCircle } from "ionicons/icons";
+import { book, calculator, bulb, chevronForward } from "ionicons/icons";
 import { useHistory } from "react-router";
 import { CategoryInterface } from "../../interfaces/CategoryInterface";
 import { useState } from "react";
@@ -30,11 +27,11 @@ const Tab1: React.FC = () => {
   const mockCategories: CategoryInterface[] = [
     {
       id: 1,
-      title: "Simulador Universitarios",
+      title: "Simulador Universitario",
       description:
         "Prepárate para los exámenes de admisión universitaria con preguntas similares a las que encontrarás en el examen real.",
       short_description: "Prepárate para los exámenes de admisión",
-      slug: "universitarios",
+      slug: "universitario",
       duration: 20,
       questions_per_game: 10,
     },
@@ -96,6 +93,13 @@ const Tab1: React.FC = () => {
     });
   };
 
+  // Mapa de iconos por slug
+  const categoryIcons: { [key: string]: string } = {
+    universitario: book,
+    matematico: calculator,
+    logico: bulb,
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -124,26 +128,39 @@ const Tab1: React.FC = () => {
               <IonSpinner name="crescent" />
             </div>
           ) : (
-            <IonList>
-              <IonListHeader>
-                <IonLabel>Categorias </IonLabel>
-              </IonListHeader>
+            <div className="categories-container">
               {categories.map((category) => (
-                <IonItem key={category.id}>
-                  <IonLabel>
-                    {category.title}
-                    <p className="description-category">
-                      {category.description}
-                    </p>
-                  </IonLabel>
-                  <IonIcon
-                    className="ion-icon-play"
-                    icon={playCircle}
-                    onClick={() => handleCatogoryClick(category)}
-                  />
-                </IonItem>
+                <IonCard
+                  key={category.id}
+                  className="category-card-item"
+                  onClick={() => handleCatogoryClick(category)}
+                >
+                  <div className="card-content-row">
+                    <div className="icon-circle">
+                      <IonIcon
+                        icon={categoryIcons[category.slug]}
+                        style={{
+                          fontSize: "32px",
+                          color: "var(--ion-color-primary)",
+                        }}
+                      />
+                    </div>
+                    <div className="card-text">
+                      <h3 className="card-title">{category.title}</h3>
+                      <p className="card-description">{category.description}</p>
+                    </div>
+                    <IonIcon
+                      icon={chevronForward}
+                      className="arrow-icon"
+                      style={{
+                        fontSize: "24px",
+                        color: "var(--ion-color-medium)",
+                      }}
+                    />
+                  </div>
+                </IonCard>
               ))}
-            </IonList>
+            </div>
           )}
         </IonCardContent>
       </IonContent>
