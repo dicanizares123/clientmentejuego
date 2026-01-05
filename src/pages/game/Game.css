@@ -1,0 +1,63 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 300px;
+}
+
+.game-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.question-header {
+  margin-bottom: 20px;
+}
+
+.question-number {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ion-color-medium);
+  margin: 0;
+  text-align: center;
+}
+
+.question-card {
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--ion-text-color);
+  line-height: 1.5;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--ion-color-light-shade);
+  cursor: pointer;
+}
+
+.option-item ion-label {
+  flex: 1;
+  font-size: 15px;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.navigation-buttons ion-button {
+  flex: 1;
+}

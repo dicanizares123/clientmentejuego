@@ -54,6 +54,8 @@ import "@ionic/react/css/palettes/dark.system.css";
 /* Theme variables */
 import "./theme/variables.css";
 import CategoryDetail from "./pages/category-detail/CategoryDetail";
+import Game from "./pages/game/Game";
+import GameResults from "./pages/game-results/GameResults";
 
 setupIonicReact();
 
@@ -61,6 +63,12 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
+        <Route exact path="/game-results">
+          <GameResults />
+        </Route>
+        <Route exact path="/game/:slug">
+          <Game />
+        </Route>
         <Route exact path="/category/:slug">
           <CategoryDetail />
         </Route>

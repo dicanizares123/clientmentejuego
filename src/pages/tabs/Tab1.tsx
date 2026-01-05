@@ -13,72 +13,41 @@ import {
   IonCard,
 } from "@ionic/react";
 import "./Tab1.css";
-import { book, calculator, bulb, chevronForward } from "ionicons/icons";
+import {
+  book,
+  calculator,
+  bulb,
+  /*   chevronForward,
+   */ playCircle,
+} from "ionicons/icons";
 import { useHistory } from "react-router";
 import { CategoryInterface } from "../../interfaces/CategoryInterface";
 import { useState } from "react";
+import { fetchCategories } from "../../services/ApiMenteJuegoService";
 const Tab1: React.FC = () => {
   const history = useHistory();
 
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // Datos de prueba (simula una llamada a API)
-  const mockCategories: CategoryInterface[] = [
-    {
-      id: 1,
-      title: "Simulador Universitario",
-      description:
-        "Prepárate para los exámenes de admisión universitaria con preguntas similares a las que encontrarás en el examen real.",
-      short_description: "Prepárate para los exámenes de admisión",
-      slug: "universitario",
-      duration: 20,
-      questions_per_game: 10,
-    },
-    {
-      id: 2,
-      title: "Razonamiento Matemático",
-      description:
-        "Desarrolla tus habilidades matemáticas con problemas de lógica, aritmética, álgebra y geometría.",
-      short_description: "Desarrolla tus habilidades matemáticas",
-      slug: "matematico",
-      duration: 20,
-      questions_per_game: 10,
-    },
-    {
-      id: 3,
-      title: "Razonamiento Lógico",
-      description:
-        "Mejora tu capacidad de análisis con ejercicios de secuencias, analogías y problemas de lógica.",
-      short_description: "Mejora tu capacidad de análisis",
-      slug: "logico",
-      duration: 20,
-      questions_per_game: 10,
-    },
-  ];
-  const fetchCategories = async () => {
-    try {
-      setLoading(true);
+  const loadCategories = async () => {
+    setLoading(true);
 
-      // TODO: Reemplazar con la llamada real a la API en ApiMenteJuegoService.ts
-      // const response = await fetch('https://tu-api.com/categories');
-      // const data = await response.json();
-      // setCategories(data);
+    const categoriesData = await fetchCategories();
+    setCategories(categoriesData);
+    setLoading(false);
 
-      // Por ahora usamos datos de prueba
-      setTimeout(() => {
-        setCategories(mockCategories);
-        setLoading(false);
-      }, 500); // Simula delay de red
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-      setLoading(false);
-    }
+    // TODO: Reemplazar con la llamada real a la API en ApiMenteJuegoService.ts
+    // const response = await fetch('https://tu-api.com/categories');
+    // const data = await response.json();
+    // setCategories(data);
+
+    // Por ahora usamos datos de prueba
   };
 
   useIonViewDidEnter(() => {
     console.log("Leyendo Categorias");
-    fetchCategories();
+    loadCategories();
   });
 
   const handleCatogoryClick = (category: CategoryInterface) => {
@@ -87,7 +56,7 @@ const Tab1: React.FC = () => {
       title: category.title,
       description: category.description,
       short_description: category.short_description,
-      duration: category.duration,
+      duration_in_minutes: category.duration_in_minutes,
       questions_per_game: category.questions_per_game,
       slug: category.slug,
     });
@@ -98,6 +67,17 @@ const Tab1: React.FC = () => {
     universitario: book,
     matematico: calculator,
     logico: bulb,
+  };
+
+  // Diccionario de agrupación de categorías
+  const categoryGroups: { [key: string]: string[] } = {
+    simuladores: ["universitario"],
+    habilidades: ["matematico", "logico"],
+  };
+
+  // Función para filtrar categorías por grupo
+  const getCategoriesByGroup = (groupSlugs: string[]) => {
+    return categories.filter((cat) => groupSlugs.includes(cat.slug));
   };
 
   return (
@@ -123,44 +103,107 @@ const Tab1: React.FC = () => {
               </p>
             </IonCardSubtitle>
           </div>
+
           {loading ? (
             <div className="loading-container">
               <IonSpinner name="crescent" />
             </div>
           ) : (
-            <div className="categories-container">
-              {categories.map((category) => (
-                <IonCard
-                  key={category.id}
-                  className="category-card-item"
-                  onClick={() => handleCatogoryClick(category)}
-                >
-                  <div className="card-content-row">
-                    <div className="icon-circle">
-                      <IonIcon
-                        icon={categoryIcons[category.slug]}
-                        style={{
-                          fontSize: "32px",
-                          color: "var(--ion-color-primary)",
-                        }}
-                      />
-                    </div>
-                    <div className="card-text">
-                      <h3 className="card-title">{category.title}</h3>
-                      <p className="card-description">{category.description}</p>
-                    </div>
-                    <IonIcon
-                      icon={chevronForward}
-                      className="arrow-icon"
-                      style={{
-                        fontSize: "24px",
-                        color: "var(--ion-color-medium)",
-                      }}
-                    />
-                  </div>
-                </IonCard>
-              ))}
-            </div>
+            <>
+              {/* Sección Simuladores */}
+              <div className="section-container">
+                <IonCardTitle className="section-title">
+                  Simuladores
+                </IonCardTitle>
+                <IonCardSubtitle className="section-subtitle">
+                  Simuladores que te preparan para exámenes
+                </IonCardSubtitle>
+                <div className="categories-container">
+                  {getCategoriesByGroup(categoryGroups.simuladores).map(
+                    (category) => (
+                      <IonCard
+                        key={category.id}
+                        className="category-card-item"
+                        onClick={() => handleCatogoryClick(category)}
+                      >
+                        <div className="card-content-row">
+                          <div className="icon-circle">
+                            <IonIcon
+                              icon={categoryIcons[category.slug]}
+                              style={{
+                                fontSize: "32px",
+                                color: "var(--ion-color-primary)",
+                              }}
+                            />
+                          </div>
+                          <div className="card-text">
+                            <h3 className="card-title">{category.title}</h3>
+                            <p className="card-description">
+                              {category.description}
+                            </p>
+                          </div>
+                          <IonIcon
+                            icon={playCircle}
+                            className="arrow-icon"
+                            style={{
+                              fontSize: "24px",
+                              color: "var(--ion-color-primary",
+                            }}
+                          />
+                        </div>
+                      </IonCard>
+                    )
+                  )}
+                </div>
+              </div>
+
+              {/* Sección Desarrollo de Habilidades Cognitivas */}
+              <div className="section-container">
+                <IonCardTitle className="section-title">
+                  Desarrollo de Habilidades Cognitivas
+                </IonCardTitle>
+                <IonCardSubtitle className="section-subtitle">
+                  Mejora tu razonamiento lógico y matemático
+                </IonCardSubtitle>
+                <div className="categories-container">
+                  {getCategoriesByGroup(categoryGroups.habilidades).map(
+                    (category) => (
+                      <IonCard
+                        key={category.id}
+                        className="category-card-item"
+                        onClick={() => handleCatogoryClick(category)}
+                      >
+                        <div className="card-content-row">
+                          <div className="icon-circle">
+                            <IonIcon
+                              icon={categoryIcons[category.slug]}
+                              style={{
+                                fontSize: "32px",
+                                color: "var(--ion-color-primary)",
+                              }}
+                            />
+                          </div>
+                          <div className="card-text">
+                            <h3 className="card-title">{category.title}</h3>
+                            <p className="card-description">
+                              {category.description}
+                            </p>
+                          </div>
+                          <IonIcon
+                            icon={playCircle}
+                            className="arrow-icon"
+                            style={{
+                              fontSize: "24px",
+                              color: "var(--ion-color-primary",
+                            }}
+                          />
+                        </div>
+                      </IonCard>
+                    )
+                  )}
+                </div>
+              </div>
+            </>
           )}
         </IonCardContent>
       </IonContent>

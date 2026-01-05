@@ -32,10 +32,11 @@ const CategoryDetail: React.FC = () => {
   }, [category, history]);
 
   const handleStart = () => {
-    // Redirige a donde necesites, ejemplo: página de juego
-    // history.push(`/game/${category.slug}`);
-    // O por ahora vuelve al tab1
-    history.push("/tabs/tab1");
+    // Redirige a la página de juego con el ID de la categoría
+    history.push(`/game/${category.slug}`, {
+      categoryId: category.id,
+      categoryTitle: category.title,
+    });
   };
 
   // Mientras verifica o si no hay datos, muestra un spinner
@@ -66,7 +67,7 @@ const CategoryDetail: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/tabs/tab1" />
           </IonButtons>
-          <IonTitle>{category.title}</IonTitle>
+          <IonTitle className="title-header">{category.title}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -85,7 +86,8 @@ const CategoryDetail: React.FC = () => {
           <IonCardContent>
             <div className="category-info">
               <div className="info-item">
-                <strong>Duración:</strong> {category.duration} minutos
+                <strong>Duración:</strong> {category.duration_in_minutes}{" "}
+                minutos
               </div>
               <div className="info-item">
                 <strong>Preguntas:</strong> {category.questions_per_game}{" "}
@@ -94,7 +96,7 @@ const CategoryDetail: React.FC = () => {
             </div>
 
             <IonButton expand="full" size="default" onClick={handleStart}>
-              Empezar
+              Jugar
             </IonButton>
           </IonCardContent>
         </IonCard>

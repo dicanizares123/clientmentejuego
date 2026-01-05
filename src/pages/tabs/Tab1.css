@@ -7,11 +7,11 @@
 }
 
 .text-header {
-  /*   font-weight: bold;
- */
-  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  padding: 0 10px;
   text-align: center;
-  margin-top: 0;
 }
 
 .header-content p {
@@ -83,4 +83,21 @@
 
 .arrow-icon {
   flex-shrink: 0;
+}
+
+.section-container {
+  margin-top: 24px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  padding: 0 10px;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  margin: 0 0 12px 0;
+  padding: 0 10px;
 }
