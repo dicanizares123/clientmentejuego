@@ -10,7 +10,7 @@ import { GameScoreInterface } from "../interfaces/GameScoreInterface";
 const API_BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:8080" // Para navegador web
-    : "http://10.0.2.2:8080"; // Para emulador Android
+    : "http://tu-ip:8080"; // Para emulador Android
 
 /**
  * Recupera las categorías de la API.
