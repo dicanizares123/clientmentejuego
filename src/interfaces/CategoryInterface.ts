@@ -3,7 +3,7 @@ export interface CategoryInterface {
   title: string;
   description: string;
   short_description: string;
-  duration: number;
+  duration_in_minutes: number;
   questions_per_game: number;
   slug: string;
 }

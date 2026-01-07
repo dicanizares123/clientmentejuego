@@ -29,3 +29,6 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+# Documentation files
+FIXES_GAME_RESULTS.md

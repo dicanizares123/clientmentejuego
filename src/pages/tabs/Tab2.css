@@ -1,3 +1,18 @@
+/* Animación de entrada para la gráfica */
+@keyframes chartPop {
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(20deg);
+  }
+  75% {
+    transform: scale(0.95) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 .chart-content {
   width: 100%;
   height: 300px;
@@ -6,14 +21,15 @@
   align-items: center;
   padding: 20px 0;
   margin-bottom: 20px;
+  animation: chartPop 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 .text-header {
-  /*   font-weight: bold;
- */
-  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  padding: 0 10px;
   text-align: center;
-  margin-top: 0;
 }
 
 .header-content {

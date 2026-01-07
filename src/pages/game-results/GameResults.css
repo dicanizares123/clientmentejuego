@@ -1,0 +1,105 @@
+.results-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100%;
+}
+
+.results-card {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.results-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+  color: var(--ion-text-color);
+}
+
+.score-circle {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--ion-color-primary),
+    var(--ion-color-secondary)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.score-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 16px;
+  color: white;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.results-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--ion-color-light);
+}
+
+.stat-item ion-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.stat-item.correct ion-icon {
+  color: #2dd36f;
+}
+
+.stat-item.incorrect ion-icon {
+  color: #eb445a;
+}
+
+.stat-item.unanswered ion-icon {
+  color: #ffc409;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ion-text-color);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--ion-color-medium);
+}
