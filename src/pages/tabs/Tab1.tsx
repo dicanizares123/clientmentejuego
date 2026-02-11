@@ -19,6 +19,7 @@ import {
   bulb,
   /*   chevronForward,
    */ playCircle,
+  libraryOutline,
 } from "ionicons/icons";
 import { useHistory } from "react-router";
 import { CategoryInterface } from "../../interfaces/CategoryInterface";
@@ -67,12 +68,13 @@ const Tab1: React.FC = () => {
     universitario: book,
     matematico: calculator,
     logico: bulb,
+    verbal: libraryOutline,
   };
 
   // Diccionario de agrupación de categorías
   const categoryGroups: { [key: string]: string[] } = {
     simuladores: ["universitario"],
-    habilidades: ["matematico", "logico"],
+    habilidades: ["matematico", "logico", "verbal"],
   };
 
   // Función para filtrar categorías por grupo
@@ -135,7 +137,7 @@ const Tab1: React.FC = () => {
                             className="arrow-icon"
                             style={{
                               fontSize: "24px",
-                              color: "var(--ion-color-primary",
+                              color: "var(--ion-color-primary)",
                             }}
                           />
                         </div>
@@ -176,7 +178,7 @@ const Tab1: React.FC = () => {
                             className="arrow-icon"
                             style={{
                               fontSize: "24px",
-                              color: "var(--ion-color-primary",
+                              color: "var(--ion-color-primary)",
                             }}
                           />
                         </div>
