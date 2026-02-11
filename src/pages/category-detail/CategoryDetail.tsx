@@ -71,7 +71,7 @@ const CategoryDetail: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonCard className="category-card">
+        <div className="category-card">
           <strong>
             <p className="shortcategory-description">
               {category.short_description}
@@ -99,7 +99,7 @@ const CategoryDetail: React.FC = () => {
               Jugar
             </IonButton>
           </IonCardContent>
-        </IonCard>
+        </div>
       </IonContent>
     </IonPage>
   );

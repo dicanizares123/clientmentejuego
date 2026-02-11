@@ -97,7 +97,83 @@
 }
 
 .section-subtitle {
-  font-size: 13px;
+  font-size: 16px;
   margin: 0 0 12px 0;
   padding: 0 10px;
+}
+
+/* Nuevos estilos para la cuadrícula de áreas */
+.areas-section {
+  padding: 10px 16px 28px 16px;
+}
+
+.areas-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 6px 0 14px 0;
+}
+
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.area-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  height: 120px;
+  border-radius: 14px;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-align: center;
+}
+
+.area-tile:active,
+.area-tile:hover {
+  transform: translateY(-4px);
+}
+
+.area-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.area-icon ion-icon {
+  font-size: 26px;
+  color: #fff;
+}
+
+.area-label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+/* Colores similares a la imagen */
+.area-blue {
+  background: linear-gradient(180deg, #3b82f6 0%, #2b6de8 100%);
+}
+.area-teal {
+  background: linear-gradient(180deg, #14b8a6 0%, #0ea5a0 100%);
+}
+.area-green {
+  background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+}
+.area-purple {
+  background: linear-gradient(180deg, #a78bfa 0%, #8b5cf6 100%);
 }

@@ -7,10 +7,7 @@ import { SubmitAnswersInterface } from "../interfaces/SubmitAnswersInterface";
 import { GameResultsInterface } from "../interfaces/GameResultsInterface";
 import { GameScoreInterface } from "../interfaces/GameScoreInterface";
 
-const API_BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:8080" // Para navegador web
-    : "http://tu-ip:8080"; // Para emulador Android o dispositivo físico
+const API_BASE_URL = "https://apimentejuego-production.up.railway.app";
 
 /**
  * Recupera las categorías de la API.
@@ -46,7 +43,7 @@ export const getQuestionWithOptions = async (
 ): Promise<QuestionsResponse[]> => {
   try {
     const response = await axios.get(
-      `${API_BASE_URL}/question-options/with-options/${categoryId}`
+      `${API_BASE_URL}/question-options/per-category/${categoryId}`
     );
 
     const questionsWithOptions: QuestionsResponse[] = response.data;

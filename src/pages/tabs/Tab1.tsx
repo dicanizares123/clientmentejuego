@@ -94,14 +94,8 @@ const Tab1: React.FC = () => {
         <IonCardContent>
           <div className="header-content">
             <IonCardTitle className="text-header">
-              Empieza a practicar tu dominio
+              ¿Qué área deseas practicar?
             </IonCardTitle>
-            <IonCardSubtitle>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Blanditiis sit eligendi quisquam magni minima.
-              </p>
-            </IonCardSubtitle>
           </div>
 
           {loading ? (
@@ -112,12 +106,6 @@ const Tab1: React.FC = () => {
             <>
               {/* Sección Simuladores */}
               <div className="section-container">
-                <IonCardTitle className="section-title">
-                  Simuladores
-                </IonCardTitle>
-                <IonCardSubtitle className="section-subtitle">
-                  Simuladores que te preparan para exámenes
-                </IonCardSubtitle>
                 <div className="categories-container">
                   {getCategoriesByGroup(categoryGroups.simuladores).map(
                     (category) => (
@@ -152,19 +140,13 @@ const Tab1: React.FC = () => {
                           />
                         </div>
                       </IonCard>
-                    )
+                    ),
                   )}
                 </div>
               </div>
 
               {/* Sección Desarrollo de Habilidades Cognitivas */}
               <div className="section-container">
-                <IonCardTitle className="section-title">
-                  Desarrollo de Habilidades Cognitivas
-                </IonCardTitle>
-                <IonCardSubtitle className="section-subtitle">
-                  Mejora tu razonamiento lógico y matemático
-                </IonCardSubtitle>
                 <div className="categories-container">
                   {getCategoriesByGroup(categoryGroups.habilidades).map(
                     (category) => (
@@ -199,7 +181,7 @@ const Tab1: React.FC = () => {
                           />
                         </div>
                       </IonCard>
-                    )
+                    ),
                   )}
                 </div>
               </div>
